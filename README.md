@@ -3,7 +3,7 @@
 Image batch pre-process for Stable Diffusion traning.
 
 - Categorize images by tag
-- Upscale or downscale images to a size suitable for training.
+- Upscale or downscale images to a size suitable for training. ( Keep high quality as possible. )
 
 # Setup
 Need python.
