@@ -1,5 +1,5 @@
 :: 자료 위치
-set DIR_IN=G:\AI_TrainTemp\_SDTrainPreProc\_run
+set DIR_IN=C:\
 
 :: 학습 해상도. 512, 768, 1024 등등. (64단위).
 set RES=1024

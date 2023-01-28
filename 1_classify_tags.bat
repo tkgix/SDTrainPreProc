@@ -1,4 +1,4 @@
-set DIR_IN=G:\AI_TrainTemp\_SDTrainPreProc\_run
+set DIR_IN=C:\
 
 
 set TAGS=sketch,monochrome,no_humans
