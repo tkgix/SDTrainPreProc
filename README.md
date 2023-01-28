@@ -18,8 +18,7 @@ Click _install.bat
 
 # Resize Images
 1. Open "2_adjust_size.bat" File.
-2. Write Images Directory to first line
-   like as "set DIR_IN=C:\Pictures\"
-3. Write resolution for traning. - like as "set RES=512" or "set RES=768" or "set RES=1024"
+2. Write Images Directory to first line - like as "set DIR_IN=C:\Pictures\"
+3. Write resolution you want to train. - like as "set RES=512" or "set RES=768" or "set RES=1024"
 4. Save
 5. Run
