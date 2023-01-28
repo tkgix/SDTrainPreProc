@@ -32,6 +32,9 @@ def main(args):
     for file in SUB_DIR_FILES:
       hf_hub_download(args.repo_id, file, subfolder=SUB_DIR, cache_dir=os.path.join(
           args.model_dir, SUB_DIR), force_download=True, force_filename=file)
+          
+  if args.install_only == True:
+    return
 
   image_paths = glob.glob(os.path.join(args.dir_in, "*.jpg")) + \
       glob.glob(os.path.join(args.dir_in, "*.png")) + glob.glob(os.path.join(args.dir_in, "*.webp"))
@@ -119,7 +122,7 @@ def main(args):
 
 if __name__ == '__main__':
   parser = argparse.ArgumentParser()
-  parser.add_argument("--dir_in", type=str, default=None, help="Directory for check", required=True)
+  parser.add_argument("--dir_in", type=str, default=None, help="Directory for check")
   parser.add_argument("--tags", type=str, default="sketch,monochrome,no_humans", help="Tags for move")
   parser.add_argument("--thresh", type=float, default=0.1, help="threshold of confidence to add a tag")
   parser.add_argument("--dir_out", type=str, default=None, help="Root Directory to move")
@@ -127,6 +130,7 @@ if __name__ == '__main__':
   parser.add_argument("--repo_id", type=str, default=WD14_TAGGER_REPO, help="repo id for wd14 tagger on Hugging Face")
   parser.add_argument("--model_dir", type=str, default="wd14_tagger_model", help="directory to store wd14 tagger model")
   parser.add_argument("--force_download", action='store_true', help="force downloading wd14 tagger models")  
+  parser.add_argument("--install_only", action='store_true', help="")  
   parser.add_argument("--batch_size", type=int, default=1, help="batch size in inference")      
   
   args = parser.parse_args()
