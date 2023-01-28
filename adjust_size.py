@@ -376,7 +376,7 @@ def image_adjust_size_for_SD(image, image_path, resolutions, expand_snap):
                         print(f"    \033[92m Downscale + Fill ( {new_w} x {new_h} )\033[0m")
                     else:
                         print(f"    \033[92m Resize + Fill ( {new_w} x {new_h} )\033[0m")
-
+                    
                     image = image_downscale(image , w,h)                        
                     image_new:Image = ImageExpandCanvas( image , new_w, new_h, color_expand_canvas, expand_snap )
                     image_new.save( os.path.join(args.dir_out, filenameToPNG(image_path)), "png")                    
@@ -441,7 +441,13 @@ def main(args):
     count_need_upscale = 0
     count_no_res = 0
     
-    expand_snap = Snap[args.expand_snap.upper()]
+    if args.expand_snap is None:
+        if args.expand == True:
+            expand_snap = Snap.BOT
+        else:
+            expand_snap = Snap.TOP
+    else:
+        expand_snap = Snap[args.expand_snap.upper()]
 
     files = set()
 
@@ -549,7 +555,7 @@ if __name__ == '__main__':
     parser.add_argument("--dir_in_upscale", type=str, default=None, help="Temporary Directory for upscaled image save")
 
     parser.add_argument("--expand", default=True, type=str2bool, help="Expand canvas to suggested size. False to crop")
-    parser.add_argument("--expand_snap", default="BOT", type=str , choices=["TOP_LEFT", "TOP", "TOP_RIGHT", "MID_LEFT", "MID", "MID_RIGHT", "BOT_LEFT", "BOT", "BOT_RIGHT"] , help="Expand canvas from Postion")
+    parser.add_argument("--expand_snap", default=None, type=str , choices=["TOP_LEFT", "TOP", "TOP_RIGHT", "MID_LEFT", "MID", "MID_RIGHT", "BOT_LEFT", "BOT", "BOT_RIGHT"] , help="Expand canvas from Postion")
     parser.add_argument("--random_canvas_color", default=False, type=str2bool, help="Expands canvas to random color")
 
     parser.add_argument("--clear_temp", default=True, type=str2bool, help="Clear temporary files (crop, upscale)")
