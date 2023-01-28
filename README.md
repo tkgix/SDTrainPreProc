@@ -1,6 +1,9 @@
 # SDTrainPreProc
  
-Image batch pre-process for Stable Diffusion traning
+Image batch pre-process for Stable Diffusion traning.
+
+- Categorize images by tag
+- Upscale or downscale images to a size suitable for training.
 
 # Setup
 Need python.
